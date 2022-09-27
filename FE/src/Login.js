@@ -18,6 +18,7 @@ export class Login extends Component {
     render() {
         return(
             <div>
+                <h3>Login</h3>
                 <form className="form">
                     <div className="form-outline mb-4">
                         <input type="email" id="form2Example1" className="form-control" />
@@ -29,7 +30,7 @@ export class Login extends Component {
                         <label className="form-label" for="form2Example2">Password</label>
                     </div>
 
-                    <button type="button" className="btn btn-light btn-block mb-4"><a href="/home">Log in</a></button>
+                    <button type="button" className="btn btn-light btn-block mb-4"><a href="/movies">Log in</a></button>
 
                     <div className="text-center">
                         <p>Not a member? <a href="/register">Register</a></p>

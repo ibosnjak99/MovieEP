@@ -69,6 +69,7 @@ export class Register extends Component {
     render() {
         return(
             <div>
+                <h3>Register</h3>
                 <form class="form">
                     <div class="form-outline mb-4">
                         <input type="email" id="form2Example1" class="form-control" onChange={this.changeUsername}/>
@@ -84,13 +85,13 @@ export class Register extends Component {
                         type="button"
                          class="btn btn-light btn-block mb-4"
                          onClick={() => this.register()}>
-                            <a href="/home">
+                            <a href="/movies">
                                 Sign up
                                 </a>
                         </button>
 
                     <div class="text-center">
-                        <p>Back to log in: <a href="/login">Log in</a></p>
+                        <p>Back to login: <a href="/">Log in</a></p>
                     </div>
                 </form>
             </div>

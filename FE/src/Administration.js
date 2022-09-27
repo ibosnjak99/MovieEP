@@ -3,6 +3,7 @@ import { variables } from "./Variables";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import { NavLink } from "react-router-dom";
 
 export class Administration extends Component {
 
@@ -131,6 +132,20 @@ export class Administration extends Component {
         return(
             <div>
                 <ToastContainer position='bottom-right' hideProgressBar />
+                <nav className='navbar navbar-expand-sm bg-light navbar-dark'>
+                    <ul className='navbar-nav'>
+                        <li className='nav-item- m-1'>
+                        <NavLink className='btn btn-light btn-outline-primary' to='/administration'>
+                            Administration
+                        </NavLink>
+                        </li>
+                        <li className='nav-item- m-1'>
+                        <NavLink className='btn btn-light btn-outline-primary' to='/movies'>
+                            Movies
+                        </NavLink>
+                        </li>
+                    </ul>
+                </nav>
                 <table className="table table-striped">
                     <thead>
                         <tr>
@@ -187,9 +202,12 @@ export class Administration extends Component {
                             </div>
                             <div className="input-group mb-3">
                                 <span className="input-group-text">Role</span>
-                                <input type="text" className="form-control"
+                                <select name="role" id="role"
                                 value={Role}
-                                onChange={this.changeRole} />
+                                onChange={this.changeRole} >
+                                <option value="Admin">Admin</option>
+                                <option value="User">User</option>
+                                </select>
                             </div>
 
                                 {Id !== 0 ?

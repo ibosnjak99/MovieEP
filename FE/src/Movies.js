@@ -3,6 +3,7 @@ import { variables } from "./Variables";
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from "react-toastify";
+import { NavLink } from "react-router-dom";
 
 export class Movies extends Component {
 
@@ -162,6 +163,20 @@ export class Movies extends Component {
         return(
             <div>
                 <ToastContainer position='bottom-right' hideProgressBar />
+                <nav className='navbar navbar-expand-sm bg-light navbar-dark'>
+                    <ul className='navbar-nav'>
+                        <li className='nav-item- m-1'>
+                        <NavLink className='btn btn-light btn-outline-primary' to='/administration'>
+                            Administration
+                        </NavLink>
+                        </li>
+                        <li className='nav-item- m-1'>
+                        <NavLink className='btn btn-light btn-outline-primary' to='/movies'>
+                            Movies
+                        </NavLink>
+                        </li>
+                    </ul>
+                </nav>
                 <button type="button"
                     className="btn btn-primary m-3 float-left"
                     data-bs-toggle="modal"

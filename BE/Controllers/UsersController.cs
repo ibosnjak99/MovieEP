@@ -93,21 +93,16 @@ namespace MoviesApi130.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<List<User>>> Delete(int id)
         {
-            if (User.IsInRole("Admin")) {
-                var user = await this.context.Users.FindAsync(id);
+            var user = await this.context.Users.FindAsync(id);
 
-                if (user == null)
-                    return BadRequest("User not found.");
+            if (user == null)
+                return BadRequest("User not found.");
 
-                this.context.Users.Remove(user);
+            this.context.Users.Remove(user);
 
-                await this.context.SaveChangesAsync();
+            await this.context.SaveChangesAsync();
 
-                return Ok(await this.context.Users.ToListAsync());
-            }
-
-            return BadRequest();
-
+            return Ok(await this.context.Users.ToListAsync());
         }
     }
 }
