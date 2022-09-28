@@ -64,17 +64,19 @@ namespace MoviesApi130.Controllers
             return Ok(user);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<ActionResult<List<User>>> Create(User newUser)
         {
             this.context.Users.Add(newUser);
+
+            newUser.Role = "User";
 
             await this.context.SaveChangesAsync();
 
             return Ok(await this.context.Users.ToListAsync());
         }
 
-        [HttpPut]
+        [HttpPut, Authorize]
         public async Task<ActionResult<List<User>>> Update(User updatedUser)
         {
             var user = await this.context.Users.FindAsync(updatedUser.Id);
@@ -90,7 +92,7 @@ namespace MoviesApi130.Controllers
             return Ok(await this.context.Users.ToListAsync());
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task<ActionResult<List<User>>> Delete(int id)
         {
             var user = await this.context.Users.FindAsync(id);

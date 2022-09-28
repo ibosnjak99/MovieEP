@@ -34,7 +34,7 @@ namespace MoviesApi130.Controllers
             return Ok(movie);
         }
 
-        [HttpPost]
+        [HttpPost, Authorize]
         public async Task<ActionResult<List<Movie>>> Create(Movie newMovie)
         {
             this.context.Movies.Add(newMovie);
@@ -44,7 +44,7 @@ namespace MoviesApi130.Controllers
             return Ok(await this.context.Movies.ToListAsync());
         }
 
-        [HttpPut]
+        [HttpPut, Authorize]
         public async Task<ActionResult<List<Movie>>> Update(Movie updatedMovie)
         {
             var movie = await this.context.Movies.FindAsync(updatedMovie.Id);
@@ -61,7 +61,7 @@ namespace MoviesApi130.Controllers
             return Ok(await this.context.Movies.ToListAsync());
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("{id}"), Authorize]
         public async Task<ActionResult<List<Movie>>> Delete(int id)
         {
             var movie = await this.context.Movies.FindAsync(id);
