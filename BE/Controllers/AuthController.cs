@@ -46,6 +46,12 @@ namespace Movies.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDto request)
         {
+            var users = GetAllUsers();
+
+            //foreach(var user in users)
+            //{
+
+            //}
             //todo: ef search through db users
             if (user.UserName != request.Username)
             {
@@ -59,6 +65,12 @@ namespace Movies.Controllers
 
             string token = CreateToken(user);
             return token;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<List<User>>> GetAllUsers()
+        {
+            return Ok(await this.context.Users.ToListAsync());
         }
 
         [HttpPost]

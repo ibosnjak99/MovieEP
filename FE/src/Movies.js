@@ -103,7 +103,6 @@ export class Movies extends Component {
             this.notifyAddSuccess();
             this.refreshList();
         },(error)=>{
-            console.log(error);
             this.notifyError();
         })
     }
@@ -177,6 +176,16 @@ export class Movies extends Component {
                         </li>
                     </ul>
                 </nav>
+                <div>
+                    <button type="button"
+                        className="btn btn-dark m-3 float-left"
+                        onClick={() => this.logout()}
+                        >
+                            <a href="/" class="logout">
+                                Log out
+                            </a>
+                    </button>
+                </div>
                 <button type="button"
                     className="btn btn-primary m-3 float-left"
                     data-bs-toggle="modal"

@@ -146,6 +146,14 @@ export class Administration extends Component {
                         </li>
                     </ul>
                 </nav>
+                <button type="button"
+                        className="btn btn-dark m-3 float-left"
+                        onClick={() => this.logout()}
+                        >
+                            <a href="/" class="logout">
+                                Log out
+                            </a>
+                    </button>
                 <table className="table table-striped">
                     <thead>
                         <tr>

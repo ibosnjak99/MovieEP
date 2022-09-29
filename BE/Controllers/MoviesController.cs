@@ -34,7 +34,7 @@ namespace MoviesApi130.Controllers
             return Ok(movie);
         }
 
-        [HttpPost, Authorize]
+        [HttpPost]
         public async Task<ActionResult<List<Movie>>> Create(Movie newMovie)
         {
             this.context.Movies.Add(newMovie);
@@ -44,7 +44,7 @@ namespace MoviesApi130.Controllers
             return Ok(await this.context.Movies.ToListAsync());
         }
 
-        [HttpPut, Authorize]
+        [HttpPut]
         public async Task<ActionResult<List<Movie>>> Update(Movie updatedMovie)
         {
             var movie = await this.context.Movies.FindAsync(updatedMovie.Id);

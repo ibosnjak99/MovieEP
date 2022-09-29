@@ -26,3 +26,8 @@
   margin: 20px auto;
 }
 
+.logout {
+  color: white;
+  text-decoration: none;
+  float: right;
+}

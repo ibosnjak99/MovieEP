@@ -1,8 +1,9 @@
-import React, {Component} from "react";
+import React, {Component, useState} from "react";
 import { variables } from "./Variables";
 
-export class Register extends Component {
 
+export class Register extends Component {
+    
     constructor(props) {
         super(props);
 

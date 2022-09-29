@@ -76,7 +76,7 @@ namespace MoviesApi130.Controllers
             return Ok(await this.context.Users.ToListAsync());
         }
 
-        [HttpPut, Authorize]
+        [HttpPut]
         public async Task<ActionResult<List<User>>> Update(User updatedUser)
         {
             var user = await this.context.Users.FindAsync(updatedUser.Id);
