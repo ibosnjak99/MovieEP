@@ -1,4 +1,4 @@
-import React, {Component, useState} from "react";
+import React, {Component } from "react";
 import { variables } from "./Variables";
 
 
@@ -36,10 +36,9 @@ export class Register extends Component {
         this.setState({
             Id: 0,
             UserName: "",
-            IsAdmin: "",
             Password: "",
         })
-        fetch(variables.API_URL + 'users', {
+        fetch(variables.API_URL + 'auth/register', {
             method:'POST',
             headers: {
                 'Accept':'application/json',
@@ -86,13 +85,13 @@ export class Register extends Component {
                         type="button"
                          class="btn btn-light btn-block mb-4"
                          onClick={() => this.register()}>
-                            <a href="/movies">
+                            <a href="/movies" class="txt">
                                 Sign up
                                 </a>
                         </button>
 
                     <div class="text-center">
-                        <p>Back to login: <a href="/">Log in</a></p>
+                        <p>Back to login: <a href="/" class="txt">Log in</a></p>
                     </div>
                 </form>
             </div>

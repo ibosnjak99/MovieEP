@@ -26,19 +26,14 @@ namespace Movies.Controllers
         [HttpPost("register")]
         public async Task<ActionResult<User>> Register(UserDto request)
         {
-            CreatePasswordHash(request.Password, out byte[] passwordHash, out byte[] passwordSalt);
+            CreatePasswordHash(request.Username, out byte[] passwordHash, out byte[] passwordSalt);
 
             user.UserName = request.Username;
-            user.Password = request.Password;
             user.Role = "User";
-            //user.PasswordHash = passwordHash;
-            //user.PasswordSalt = passwordSalt;
+            user.PasswordHash = passwordHash;
+            user.PasswordSalt = passwordSalt;
 
             await AddRegisteredUserToDb(user);
-
-            //this.context.Users.Add(user);
-            //await this.context.SaveChangesAsync();
-            //await this.context.Users.ToListAsync();
 
             return Ok(user);
         }
@@ -46,31 +41,18 @@ namespace Movies.Controllers
         [HttpPost("login")]
         public async Task<ActionResult<string>> Login(UserDto request)
         {
-            var users = GetAllUsers();
-
-            //foreach(var user in users)
-            //{
-
-            //}
-            //todo: ef search through db users
             if (user.UserName != request.Username)
             {
                 return BadRequest("User not found");
             }
 
-            //if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
-            //{
-            //    return BadRequest("Wrong password");
-            //}
+            if (!VerifyPasswordHash(request.Password, user.PasswordHash, user.PasswordSalt))
+            {
+                return BadRequest("Wrong password");
+            }
 
             string token = CreateToken(user);
             return token;
-        }
-
-        [HttpGet]
-        public async Task<ActionResult<List<User>>> GetAllUsers()
-        {
-            return Ok(await this.context.Users.ToListAsync());
         }
 
         [HttpPost]
@@ -90,7 +72,7 @@ namespace Movies.Controllers
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, user.UserName),
-                new Claim(ClaimTypes.Role, "Admin")
+                //new Claim(ClaimTypes.Role, "Admin")
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(

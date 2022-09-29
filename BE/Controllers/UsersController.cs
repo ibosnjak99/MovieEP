@@ -31,21 +31,21 @@ namespace MoviesApi130.Controllers
             return Ok(await this.context.Users.ToListAsync());
         }
 
-        [HttpPost("login")]
-        public async Task<ActionResult<string>> Login(User request)
-        {
-            var allUsers = await this.context.Users.ToListAsync();
+        //[HttpPost("login")]
+        //public async Task<ActionResult<string>> Login(User request)
+        //{
+        //    var allUsers = await this.context.Users.ToListAsync();
 
-            foreach (var user in allUsers)
-            {
-                if (user.UserName == request.UserName && user.Password == request.Password)
-                {
-                    return Ok("Request successful");
-                }
-            }
+        //    foreach (var user in allUsers)
+        //    {
+        //        if (user.UserName == request.UserName && user.Password == request.Password)
+        //        {
+        //            return Ok("Request successful");
+        //        }
+        //    }
 
-            return BadRequest("User not found.");
-        }
+        //    return BadRequest("User not found.");
+        //}
 
         [HttpGet]
         public async Task<ActionResult<List<User>>> GetAll()

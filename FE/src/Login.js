@@ -30,10 +30,10 @@ export class Login extends Component {
                         <label className="form-label" for="form2Example2">Password</label>
                     </div>
 
-                    <button type="button" className="btn btn-light btn-block mb-4"><a href="/movies"  onClick={() => this.login()}>Log in</a></button>
+                    <button type="button" className="btn btn-light btn-block mb-4"><a href="/movies"  onClick={() => this.login()} class="txt">Log in</a></button>
 
                     <div className="text-center">
-                        <p>Not a member? <a href="/register">Register</a></p>
+                        <p>Not a member? <a href="/register" class="txt">Register</a></p>
                     </div>
                 </form>
             </div>
