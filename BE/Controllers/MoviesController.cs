@@ -61,7 +61,7 @@ namespace MoviesApi130.Controllers
             return Ok(await this.context.Movies.ToListAsync());
         }
 
-        [HttpDelete("{id}"), Authorize]
+        [HttpDelete("{id}")]
         public async Task<ActionResult<List<Movie>>> Delete(int id)
         {
             var movie = await this.context.Movies.FindAsync(id);

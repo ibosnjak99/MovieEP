@@ -19,34 +19,6 @@ namespace MoviesApi130.Controllers
             this.context = context;
         }
 
-        [HttpPost("register")]
-        public async Task<ActionResult<User>> Register(User user)
-        {
-            user.Role = "User";
-
-            this.context.Users.Add(user);
-
-            await this.context.SaveChangesAsync();
-
-            return Ok(await this.context.Users.ToListAsync());
-        }
-
-        //[HttpPost("login")]
-        //public async Task<ActionResult<string>> Login(User request)
-        //{
-        //    var allUsers = await this.context.Users.ToListAsync();
-
-        //    foreach (var user in allUsers)
-        //    {
-        //        if (user.UserName == request.UserName && user.Password == request.Password)
-        //        {
-        //            return Ok("Request successful");
-        //        }
-        //    }
-
-        //    return BadRequest("User not found.");
-        //}
-
         [HttpGet]
         public async Task<ActionResult<List<User>>> GetAll()
         {
